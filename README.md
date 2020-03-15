@@ -4,7 +4,7 @@
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 ![Darknet Logo](https://avatars3.githubusercontent.com/u/20605668?s=460&u=69278b7499e3557b24d071dd2c0b4aff24cb153e&v=4)
 
-
+### 在百度AISTUDIO安装pytorch
 ```python
 import os
 print(
@@ -26,7 +26,7 @@ print(
 
 DOWNLOAD=True #下载设置True 安装设置False
 if DOWNLOAD:
-	#os.system('pip download bs4 lxml xlwt xlrd seaborn -i https://pypi.tuna.tsinghua.edu.cn/simple -d pypi')
+	os.system('pip download bs4 lxml xlwt xlrd seaborn -i https://pypi.tuna.tsinghua.edu.cn/simple -d pypi')
 	os.system('pip download torch==1.4.0+cu92 torchvision==0.5.0+cu92 -f https://download.pytorch.org/whl/torch_stable.html -d pypi')
 else:
 	os.system('pip install bs4 lxml xlwt xlrd seaborn torch torchvision --no-index -f ./pypi')
