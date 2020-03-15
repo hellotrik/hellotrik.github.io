@@ -2,6 +2,9 @@
 
 ### Markdown
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+![Darknet Logo](http://pjreddie.com/media/files/darknet-black-small.png)
+
+
 ```markdown
 Syntax highlighted code block
 
