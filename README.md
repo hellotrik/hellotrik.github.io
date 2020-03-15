@@ -139,8 +139,8 @@ public final class Hrd {
 		}
 		return h;
 	}	
-	static int[][] D={{0,-1},{0,1},{-1,0},{1,0}};
-	static int[][] type2={{2,2},{1,1},{2,1},{1,2}};
+	static int[][] D={{0,-1},{0,1},{-1,0},{1,0},};
+	static int[][] type2={{2,2},{1,1},{2,1},{1,2},};
 	public static boolean Move(int h,int dir){
 		for(int i=1;i<6;i++)for(int j=1;j<5;j++){
 			if(sta[i][j]==h&&(sta[i+D[dir][0]][j+D[dir][1]]!=0&&sta[i+D[dir][0]][j+D[dir][1]]!=h))
@@ -161,6 +161,7 @@ public final class Hrd {
 	
 	private Hrd(){}
 }
+
 ```
 
 ```markdown
