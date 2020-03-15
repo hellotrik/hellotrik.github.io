@@ -2,7 +2,7 @@
 
 ### Markdown
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-![Darknet Logo](https://avatars3.githubusercontent.com/u/20605668?s=460&u=69278b7499e3557b24d071dd2c0b4aff24cb153e&v=4)
+![](https://wx1.sinaimg.cn/mw690/69c49d5cly1gcujbwvlt3j206l06ldgi.jpg)
 
 ### 在百度AISTUDIO安装pytorch
 ```python
