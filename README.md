@@ -1,8 +1,8 @@
 ## Welcome to Java
-
+![Image](https://wx1.sinaimg.cn/mw690/69c49d5cly1gcujbwvlt3j206l06ldgi.jpg)
 ### Markdown
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-![Money](https://wx1.sinaimg.cn/mw690/69c49d5cly1gcujbwvlt3j206l06ldgi.jpg)
+
 
 ### 在百度AISTUDIO安装pytorch
 ```python
