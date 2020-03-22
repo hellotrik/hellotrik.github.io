@@ -1,3 +1,5 @@
+### 如何在百度安装tf-gpu==1.12.0
+'''python
 #-*- coding:utf-8 -*-
 import os,sys
 if not os.path.exists('pypi2'):
@@ -27,6 +29,6 @@ example:
             os.system(cmd[int(sys.argv[1])])
     else:
         print('未知操作')
-
+'''
 
 
