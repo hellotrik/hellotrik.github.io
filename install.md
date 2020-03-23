@@ -21,7 +21,7 @@ if __name__=='__main__':
             os.system(cmd[1])
         if not 'cudatoolkit' in os.popen('conda list cudatoolkit').read():
             os.system(cmd[2])
-        if os.popen('pip show keras').read()=='':
+        if os.popen('python3.6 -m pip show keras').read()=='':
             os.system(cmd[3])
         print('都装完了老板,请在命令行输入 python3.6 进行测试')
     elif sys.argv[1] in ['0','1','2','3']:
