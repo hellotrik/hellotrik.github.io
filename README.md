@@ -11,6 +11,12 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
 import os
 if not os.path.exists('pypi'):
 	os.mkdir('pypi')
+if not 'lxml' in ' '.join(os.listdir('pypi/')):
+	os.system('pip download bs4 lxml xlwt xlrd seaborn -i https://pypi.tuna.tsinghua.edu.cn/simple -d pypi')
+if not 'torch' in ' '.join(os.listdir('pypi/')):
+	os.system('pip download torch==1.4.0+cu92 torchvision==0.5.0+cu92 -f https://download.pytorch.org/whl/torch_stable.html -d pypi')
+if os.popen('pip show torch').read()=='' and 'torch' in ' '.join(os.listdir('pypi/')):
+	os.system('pip install bs4 lxml xlwt xlrd seaborn torch torchvision --no-index -f ./pypi')
 print(
 '''
     ██╗   ██╗ ██████╗ ██╗      █████╗  ██████╗████████╗
@@ -18,7 +24,7 @@ print(
      ╚████╔╝ ██║   ██║██║     ███████║██║        ██║   
       ╚██╔╝  ██║   ██║██║     ██╔══██║██║        ██║   
        ██║   ╚██████╔╝███████╗██║  ██║╚██████╗   ██║   
-       ╚═╝    ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝ 我打算熟练一种东西,把如何写一个神经网络框架,放在海马体
+       ╚═╝    ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝ 开发框架中....
      █████╗ ██╗    ███████╗████████╗██╗   ██╗██████╗ ██╗ ██████╗
     ██╔══██╗██║    ██╔════╝╚══██╔══╝██║   ██║██╔══██╗██║██╔═══██╗
     ███████║██║    ███████╗   ██║   ██║   ██║██║  ██║██║██║   ██║
@@ -27,13 +33,6 @@ print(
     ╚═╝  ╚═╝╚═╝    ╚══════╝   ╚═╝    ╚═════╝ ╚═════╝ ╚═╝ ╚═════╝
 '''
 )
-
-if not 'lxml' in ' '.join(os.listdir('pypi/')):
-	os.system('pip download bs4 lxml xlwt xlrd seaborn -i https://pypi.tuna.tsinghua.edu.cn/simple -d pypi')
-if not 'torch' in ' '.join(os.listdir('pypi/')):
-	os.system('pip download torch==1.4.0+cu92 torchvision==0.5.0+cu92 -f https://download.pytorch.org/whl/torch_stable.html -d pypi')
-if os.popen('pip show torch').read()=='' and 'torch' in ' '.join(os.listdir('pypi/')):
-	os.system('pip install bs4 lxml xlwt xlrd seaborn torch torchvision --no-index -f ./pypi')
 ```
 
 ```markdown
