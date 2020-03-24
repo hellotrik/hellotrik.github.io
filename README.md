@@ -9,6 +9,8 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
 ### 在百度AISTUDIO安装pytorch
 ```python
 import os
+if not os.path.exists('pypi'):
+	os.mkdir('pypi')
 print(
 '''
     ██╗   ██╗ ██████╗ ██╗      █████╗  ██████╗████████╗
@@ -30,7 +32,7 @@ if not 'lxml' in ' '.join(os.listdir('pypi/')):
 	os.system('pip download bs4 lxml xlwt xlrd seaborn -i https://pypi.tuna.tsinghua.edu.cn/simple -d pypi')
 if not 'torch' in ' '.join(os.listdir('pypi/')):
 	os.system('pip download torch==1.4.0+cu92 torchvision==0.5.0+cu92 -f https://download.pytorch.org/whl/torch_stable.html -d pypi')
-if os.popen('pip show torch').read()=='':
+if os.popen('pip show torch').read()=='' and 'torch' in ' '.join(os.listdir('pypi/')):
 	os.system('pip install bs4 lxml xlwt xlrd seaborn torch torchvision --no-index -f ./pypi')
 ```
 
