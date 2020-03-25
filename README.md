@@ -34,7 +34,7 @@ print(
 '''
 )
 ```
-	[^_^]:
+[^_^]:
 	```markdown
 	# Header 1
 	## Header 2
