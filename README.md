@@ -37,7 +37,7 @@ print(
 
 ### Friend Links
 
-[![Image](https://bxhong.top/images/6.jpg)](https://bxhong.top)
+[![Image](https://mrq-lhr.github.io/profile/6.jpg)](https://bxhong.top)Ash尘埃
 
 <!--
 ```markdown
