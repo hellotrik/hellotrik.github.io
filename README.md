@@ -1,4 +1,18 @@
-<embed src="//music.163.com/style/swf/widget.swf?sid=1321385758&type=2&auto=1&width=320&height=66" width="340" height="86"  allowNetworking="all"></embed>
+<div class="player player-mid f-cb f-pr">
+<div class="cover cover-sm f-pr">
+<img id="cover" src="//p2.music.126.net/lMnOsiDP5d3DhZMfQ667xw==/109951163648597043.jpg?param=90y90">
+<div class="mask"></div>
+<div id="play" class="bg play-bg f-hide" data-action="play"></div>
+<div id="pause" class="bg pause-bg" data-action="pause"></div>
+</div>
+<div id="mid-ctrl" class="ctrlBox" style="width: 224px;">
+<h2 class="f-pr"><i data-action="home" class="bg logo"></i><div id="title" class="title" style="width: 200px;">年少有为 (Cover 李荣浩)<span class="sub"> - 蓝心羽</span></div></h2>
+<div id="bar" class="bar" style="width: 180px;">
+<div class="played j-flag" style="width: 14.9786%;"><span class="bg thumb j-flag" id="auto-id-wFPpUGId9EFhka4K"></span></div>
+</div>
+</div>
+<span id="time" class="time">- 03:34</span>
+</div>
 
 ## Welcome to Java
 [![Image](https://avatars3.githubusercontent.com/u/20605668?s=460&u=69278b7499e3557b24d071dd2c0b4aff24cb153e&v=4)](https://mrq-lhr.github.io/蒅)
