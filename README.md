@@ -2,7 +2,7 @@
 [![Image](https://avatars3.githubusercontent.com/u/20605668?s=460&u=69278b7499e3557b24d071dd2c0b4aff24cb153e&v=4)](https://mrq-lhr.github.io/蒅)
 ### [在百度安装tf-gpu==1.12.0](https://mrq-lhr.github.io/install)
 
-### [Markdown](./bottleneck/readme)
+### [Markdown](./bottleneck)
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 
