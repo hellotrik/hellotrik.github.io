@@ -1,107 +1,14 @@
-<!DOCTYPE html>
-<!-- saved from url=(0095)https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Building powerful image classification models using very little data</title>
-        
-        <link rel="stylesheet" href="./bottleneck/main.css" type="text/css">
-        <link rel="stylesheet" href="./bottleneck/pygment.css" type="text/css">
+### Building powerful image classification models using very little data
+In this tutorial, we will present a few simple yet effective methods that you can use to build a powerful image classifier, using only very few training examples --just a few hundred or thousand pictures from each class you want to be able to recognize.
+We will go over the following options:</p>
 
-        <link href="./bottleneck/css" rel="stylesheet" type="text/css">
-        <link href="https://blog.keras.io/" type="application/atom+xml" rel="alternate" title="The Keras Blog ATOM Feed">
+-training a small network from scratch (as a baseline)</li>
+-using the bottleneck features of a pre-trained network</li>
+-fine-tuning the top layers of a pre-trained network</li>
 
+This will lead us to cover the following Keras features:
 
-        <!--[if IE]>
-                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-        <!--[if lte IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="//blog.keras.io/css/ie.css"/>
-                <script src="//blog.keras.io/js/IE8.js" type="text/javascript"></script><![endif]-->
-
-        <!--[if lt IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="//blog.keras.io/css/ie6.css"/><![endif]-->
-
-<style type="text/css" abt="234"></style><script>//remove baidu search ad
-var _countAA = 0
-function doBBBd(){
-    var alla = document.getElementsByTagName('a')
-    for(var i = 0; i < alla.length; i++){
-        if(/baidu.com\/(baidu.php\?url=|adrc.php\?t)/.test(alla[i].href)){
-            var _temp = alla[i].parentElement, loop = 0
-            while(loop < 5){
-                _temp = _temp.parentElement
-                loop++
-                if(_temp.parentElement.id == 'content_left'){
-                    _temp.remove()
-                    break
-                }
-            }
-        }
-    }
-    
-    if(_countAA++ < 20){
-        setTimeout(doBBBd, 500)
-    }
-    
-}
-doBBBd()
-document.addEventListener('keyup', function(){_countAA-=10;doBBBd()}, false)
-document.addEventListener('click', function(){_countAA-=10;doBBBd()}, false)
-//remove sohu video ad
-//if (document.URL.indexOf("tv.sohu.com") >= 0){
-//    if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
-//}
-//remove 56.com video ad
-//if (document.URL.indexOf("56.com") >= 0){
-//    if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
-//}
-</script></head>
-
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1>
-                    <a href="https://blog.keras.io/index.html">The Keras Blog </a>
-                </h1>
-                <p id="side">
-                    <a href="https://github.com/fchollet/keras">Keras</a> is a Deep Learning library for Python, that is simple, modular, and extensible.
-                </p>
-                <nav><ul>
-                <li><a href="https://blog.keras.io/">Archives</a></li>
-                    <li>
-                        <a href="https://github.com/fchollet/keras">Github</a>
-                    </li>
-                    <li>
-                        <a href="http://keras.io/">Documentation</a>
-                    </li>
-                    <li>
-                        <a href="https://groups.google.com/forum/#!forum/keras-users">Google Group</a>
-                    </li>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-<section id="content" class="body">
-<article>
-        <header> <h1 class="entry-title"><a href="https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html" rel="bookmark" title="Permalink to Building powerful image classification models using very little data">Building powerful image classification models using very little data</a></h1>  </header>
-        <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-06-05T00:00:00+02:00">
-                Sun 05 June 2016
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="https://twitter.com/fchollet">Francois Chollet</a>
-        </address>
-<p>In <a href="https://blog.keras.io/category/tutorials.html">Tutorials</a>. </p>
-<p></p></footer><!-- /.post-info --><!-- /.post-info -->
-        <p>In this tutorial, we will present a few simple yet effective methods that you can use to build a powerful image classifier, using only very few training examples --just a few hundred or thousand pictures from each class you want to be able to recognize. </p>
-<p>We will go over the following options:</p>
-<ul>
-<li>training a small network from scratch (as a baseline)</li>
-<li>using the bottleneck features of a pre-trained network</li>
-<li>fine-tuning the top layers of a pre-trained network</li>
-</ul>
-<p>This will lead us to cover the following Keras features:</p>
-<ul>
-<li><code>fit_generator</code> for training Keras a model using Python data generators</li>
+1fit_generator for training Keras a model using Python data generators</li>
 <li><code>ImageDataGenerator</code> for real-time data augmentation</li>
 <li>layer freezing and model fine-tuning</li>
 <li>...and more.</li>
