@@ -34,6 +34,11 @@ print(
 '''
 )
 ```
+
+### Friend Links
+
+[![Image](https://bxhong.top/images/6.jpg)](https://bxhong.top)
+
 <!--
 ```markdown
 # Header 1
