@@ -1,4 +1,4 @@
-### [如何在百度安装tf-gpu==1.12.0](../)
+### [如何在百度安装tf-gpu==1.12.0](https://holytrick.github.io/)
 
 ```python
 #-*- coding:utf-8 -*-
