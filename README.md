@@ -1,7 +1,6 @@
 ## Welcome to Java
 [![Image](https://avatars3.githubusercontent.com/u/20605668?s=460&u=69278b7499e3557b24d071dd2c0b4aff24cb153e&v=4)](https://holytrick.github.io/clock)
 ### [Bottleneck](./bottleneck)
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 ### 在百度AISTUDIO安装pytorch
 ```python
 import os
