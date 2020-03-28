@@ -1,5 +1,5 @@
 ## Coq Tactics Index
-
+```
 Stage 1 Proving Easy Goals
 reflexivity
 assumption
@@ -23,7 +23,7 @@ Stage 4 Powerful Automatic Tactics
 auto
 intuition
 omega
-
+```
 ## reflexivity
 Use reflexivity when your goal is to prove that something equals itself.
 
