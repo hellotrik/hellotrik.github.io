@@ -1,12 +1,12 @@
 ## Coq Tactics Index
 
-Stage 1: Proving Easy Goals
+Stage 1 Proving Easy Goals
 reflexivity
 assumption
 discriminate
 constructor
 
-Stage 2: Transforming Your Goal
+Stage 2 Transforming Your Goal
 apply
 subst
 rewrite
@@ -14,12 +14,12 @@ simpl
 cut
 unfold
 
-Stage 3: Breaking Apart Your Goal
+Stage 3 Breaking Apart Your Goal
 destruct
 inversion
 induction
 
-Stage 4: Powerful Automatic Tactics
+Stage 4 Powerful Automatic Tactics
 auto
 intuition
 omega
