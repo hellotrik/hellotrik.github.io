@@ -1,6 +1,24 @@
 ## [Bottleneck](./bottleneck) [Coq](./coq)
 
 [![Image](https://avatars3.githubusercontent.com/u/20605668?s=460&u=69278b7499e3557b24d071dd2c0b4aff24cb153e&v=4)](https://holytrick.github.io/clock)
+### 抢百度Aistudio脚本
+```javascript
+x=setInterval(function(){
+	if(document.getElementsByClassName("ant-modal")[0]){
+		if(document.getElementsByClassName("ant-modal")[0].getElementsByClassName("ant-radio-wrapper")[1].className=="ant-radio-wrapper ant-radio-wrapper-disabled"){
+			document.getElementsByClassName("ant-btn")[0].click()
+		}else{
+			document.getElementsByClassName("ant-modal")[0].getElementsByClassName("ant-radio-wrapper")[1].click();
+			document.getElementsByClassName("ant-modal")[0].getElementsByClassName("ant-btn")[0].click();
+			clearInterval(x);
+		}
+	}
+	else{
+		document.getElementsByClassName("ant-btn")[0].click()
+	}
+	
+},300)
+```
 ### 在百度AISTUDIO安装pytorch
 ```python
 import os
