@@ -1,7 +1,7 @@
 ## [Bottleneck](./bottleneck) [Coq](./coq)
 
 [![Image](https://avatars3.githubusercontent.com/u/20605668?s=460&u=69278b7499e3557b24d071dd2c0b4aff24cb153e&v=4)](https://holytrick.github.io/clock)
-### catch Aistudio GPU with js
+### Catch AISTUDIO with js
 ```javascript
 x=setInterval(function(){
 	if(document.getElementsByClassName("ant-modal")[0]){
