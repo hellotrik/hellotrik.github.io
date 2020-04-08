@@ -93,7 +93,7 @@ function getTime(){
     var labels = document.getElementsByClassName("label");
     for(var i=0;i<labels.length;i++){
         labels[i].style.fontWeight = "normal"
-        labels[i].style.color = "#000";
+        labels[i].style.color = "#fff";
     }
 
     var now = new Date();
