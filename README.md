@@ -19,7 +19,7 @@ x=setInterval(function(){
 	
 },300)
 ```
-### AISTUDIO Install torch or tf
+### [AISTUDIO Install torch or tf](https://holytrick.github.io/qianziwen)
 ```python
 #-*- coding:utf-8 -*-
 import os,sys
