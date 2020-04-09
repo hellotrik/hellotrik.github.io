@@ -1,6 +1,6 @@
 ## [Bottleneck](./bottleneck) [Coq](./coq)
 
-[![Image](https://avatars3.githubusercontent.com/u/20605668?s=460&u=69278b7499e3557b24d071dd2c0b4aff24cb153e&v=4)](https://holytrick.github.io/clock)
+[![Image](https://avatars3.githubusercontent.com/u/20605668?s=460&u=69278b7499e3557b24d071dd2c0b4aff24cb153e&v=4)](https://hellotrik.github.io/clock)
 ### Catch AISTUDIO with js
 ```javascript
 x=setInterval(function(){
@@ -19,7 +19,7 @@ x=setInterval(function(){
 	
 },300)
 ```
-### [AISTUDIO Install torch or tf](https://holytrick.github.io/qianziwen)
+### [AISTUDIO Install torch or tf](https://hellotrik.github.io/qianziwen)
 ```python
 #-*- coding:utf-8 -*-
 import os,sys
