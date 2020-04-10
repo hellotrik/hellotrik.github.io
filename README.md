@@ -1,10 +1,10 @@
 ## [Bottleneck](./bottleneck) [Coq](./coq)
 
 ## mini深度框架 trik 0.1.1已发布
-'''sh
+```sh
 pip install trik
 pip install trik -f https://hellotrik.github.io/trik
-'''
+```
 
 
 [![Image](https://avatars3.githubusercontent.com/u/20605668?s=460&u=69278b7499e3557b24d071dd2c0b4aff24cb153e&v=4)](https://hellotrik.github.io/trik)
