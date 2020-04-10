@@ -1,5 +1,3 @@
-## [Bottleneck](./bottleneck) [Coq](./coq)
-
 ## mini深度框架 trik 0.1.1已发布
 ```sh
 pip install trik
