@@ -1,7 +1,17 @@
 ## [Bottleneck](./bottleneck) [Coq](./coq)
 
-[![Image](https://avatars3.githubusercontent.com/u/20605668?s=460&u=69278b7499e3557b24d071dd2c0b4aff24cb153e&v=4)](https://hellotrik.github.io/clock)
-### Catch AISTUDIO with js
+## mini深度框架 trik 0.1.1已发布
+'''sh
+pip install trik
+pip install trik -f https://hellotrik.github.io/trik
+'''
+
+
+[![Image](https://avatars3.githubusercontent.com/u/20605668?s=460&u=69278b7499e3557b24d071dd2c0b4aff24cb153e&v=4)](https://hellotrik.github.io/trik)
+
+
+
+### [Catch AISTUDIO with js](https://hellotrik.github.io/trik)
 ```javascript
 x=setInterval(function(){
 	if(document.getElementsByClassName("ant-modal")[0]){
@@ -19,7 +29,7 @@ x=setInterval(function(){
 	
 },300)
 ```
-### [AISTUDIO Install torch or tf](https://hellotrik.github.io/qianziwen)
+### [AISTUDIO Install torch or tf](https://hellotrik.github.io/trik)
 ```python
 #-*- coding:utf-8 -*-
 import os,sys
