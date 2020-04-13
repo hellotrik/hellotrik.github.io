@@ -1,7 +1,7 @@
 ## mini深度框架 trik 0.1.1已发布
 ```sh
 pip install trik
-pip install trik -f https://hellotrik.github.io/trik
+pip install trik -i https://hellotrik.github.io
 ```
 
 
