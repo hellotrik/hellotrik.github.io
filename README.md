@@ -15,10 +15,10 @@ pip install trik -i https://hellotrik.github.io
 cmake .. -G "Visual Studio 14 2015 Win64" -DWITH_GPU=OFF -DWITH_TESTING=OFF -DCMAKE_BUILD_TYPE=Release
 ```
 ### OPENMP
-```python
+```java
 
 #pragma omp parallel for  
-'''
+/*
 for循环并行化的约束条件
 
 尽管OpenMP可以方便地对for循环进行并行化，但并不是所有的for循环都可以进行并行化。
@@ -39,7 +39,7 @@ for循环并行化的约束条件
 5. 循环必须是单入口、单出口，也就是说循环内部不允许能够达到循环以外的跳转语句，exit除外。
 	异常的处理也必须在循环体内处理。
 	例如：若循环体内的break或goto会跳转到循环体外，那么会编译不通过。
-'''
+*/
 ```
 
 
