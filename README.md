@@ -18,7 +18,7 @@ cmake .. -G "Visual Studio 14 2015 Win64" -DWITH_GPU=OFF -DWITH_TESTING=OFF -DCM
 ```python
 
 #pragma omp parallel for  
-/*
+
 for循环并行化的约束条件
 
 尽管OpenMP可以方便地对for循环进行并行化，但并不是所有的for循环都可以进行并行化。
@@ -40,7 +40,6 @@ for循环并行化的约束条件
 	异常的处理也必须在循环体内处理。
 	例如：若循环体内的break或goto会跳转到循环体外，那么会编译不通过。
 
-*/
 ```
 
 
