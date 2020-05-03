@@ -4,6 +4,31 @@ pip install trik
 pip install trik -i https://hellotrik.github.io
 cmake .. -G "Visual Studio 14 2015 Win64" -DWITH_GPU=OFF -DWITH_TESTING=OFF -DCMAKE_BUILD_TYPE=Release
 ```
+### 清除图报表缓存 去除边缘停靠
+```batch
+@echo off
+reg delete HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers\Images /va /f>nul
+reg add "HKCU\Control Panel\Desktop" /v WindowArrangementActive /t REG_SZ /d 0 /f>nul
+echo Y|del C:\Users\Administrator\AppData\Local\Temp\*.* >nul
+taskkill /f /im explorer.exe
+attrib -h -s -r "%userprofile%\AppData\Local\IconCache.db"
+del /f "%userprofile%\AppData\Local\IconCache.db"
+attrib /s /d -h -s -r "%userprofile%\AppData\Local\Microsoft\Windows\Explorer\*"
+del /f "%userprofile%\AppData\Local\Microsoft\Windows\Explorer\thumbcache_32.db"
+del /f "%userprofile%\AppData\Local\Microsoft\Windows\Explorer\thumbcache_96.db"
+del /f "%userprofile%\AppData\Local\Microsoft\Windows\Explorer\thumbcache_102.db"
+del /f "%userprofile%\AppData\Local\Microsoft\Windows\Explorer\thumbcache_256.db"
+del /f "%userprofile%\AppData\Local\Microsoft\Windows\Explorer\thumbcache_1024.db"
+del /f "%userprofile%\AppData\Local\Microsoft\Windows\Explorer\thumbcache_idx.db"
+del /f "%userprofile%\AppData\Local\Microsoft\Windows\Explorer\thumbcache_sr.db"
+
+echo y|reg delete "HKEY_CLASSES_ROOT\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify" /v IconStreams
+echo y|reg delete "HKEY_CLASSES_ROOT\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify" /v PastIconsStream
+start explorer
+@pause
+```
+
+
 ### 关闭windows默认共享
 ```batch
 @echo off
