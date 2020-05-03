@@ -4,6 +4,32 @@ pip install trik
 pip install trik -i https://hellotrik.github.io
 cmake .. -G "Visual Studio 14 2015 Win64" -DWITH_GPU=OFF -DWITH_TESTING=OFF -DCMAKE_BUILD_TYPE=Release
 ```
+### 设置ip
+```
+@echo off
+REM 静态
+netsh interface ip set address name="本地连接" source = static addr = 10.3.144.171 mask=255.255.255.0
+netsh interface ip set address name="本地连接" gateway = 10.3.144.1 gwmetric =0
+netsh interface ip set dns name="本地连接" source = static addr = 202.99.160.68 register=PRIMARY
+netsh interface ip add dns name="本地连接" addr = 202.99.160.68 index=2
+
+REM 动态
+netsh interface IP set address name="本地连接" source=dhcp
+netsh interface ip set dns  name="本地连接" source=dhcp
+```
+
+
+### 自动挂载vhd
+```
+@echo off 
+echo select vdisk file="c:\swsetup\s.VHD" >vhdsel 
+echo attach vdisk>>vhdsel 
+echo list disk>>vhdsel 
+diskpart /s vhdsel 
+del /f /q vhdsel 
+exit
+```
+
 ### 一键清理
 ```batch
 @echo off
