@@ -2,18 +2,37 @@
 ```sh
 pip install trik
 pip install trik -i https://hellotrik.github.io
-██████████    ██████████      ██    ██      ██  
-    ██        ██        ██    ██    ██    ██    
-    ██        ██        ██    ██    ██  ██      
-    ██        ██        ██    ██    ████        
-    ██        ██████████      ██    ████        
-    ██        ██        ██    ██    ██  ██      
-    ██        ██        ██    ██    ██    ██    
-    ██        ██        ██    ██    ██      ██  
-    ██        ██        ██    ██    ██        ██
-
 cmake .. -G "Visual Studio 14 2015 Win64" -DWITH_GPU=OFF -DWITH_TESTING=OFF -DCMAKE_BUILD_TYPE=Release
 ```
+
+### set shell edit command=scite.exe
+```batch
+@echo off
+setlocal ENABLEDELAYEDEXPANSION 
+reg add HKCR\.c /v "Content Type" /t REG_SZ /f /d "text/plain"
+reg add HKCR\.cc /v "Content Type" /t REG_SZ /f /d "text/plain"
+reg add HKCR\.cpp /v "Content Type" /t REG_SZ /f /d "text/plain"
+reg add HKCR\.hpp /v "Content Type" /t REG_SZ /f /d "text/plain"
+reg add HKCR\.py /v "Content Type" /t REG_SZ /f /d "text/plain"
+reg add HKCR\.java /v "Content Type" /t REG_SZ /f /d "text/plain"
+reg add HKCR\.c /v "PerceivedType" /t REG_SZ /f /d "text"
+reg add HKCR\.cc /v "PerceivedType" /t REG_SZ /f /d "text"
+reg add HKCR\.cpp /v "PerceivedType" /t REG_SZ /f /d "text"
+reg add HKCR\.hpp /v "PerceivedType" /t REG_SZ /f /d "text"
+reg add HKCR\.py /v "PerceivedType" /t REG_SZ /f /d "text"
+reg add HKCR\.java /v "PerceivedType" /t REG_SZ /f /d "text"
+
+reg add HKCR\Python.file\Shell\edit\command /ve /t REG_EXPAND_SZ /f /d "%%ProgramFiles(x86)%%\AutoIt3\SciTE\SciTE.exe %%1"
+for /f %%i in ('reg query HKCR /f edit /e /s /k') do (
+	set s=%%i & if not "!s:~,4!"=="搜索结束" (
+		set s=!s!\command & set s=!s: =! & reg add !s! /ve /d "%%ProgramFiles(x86)%%\AutoIt3\SciTE\SciTE.exe %%1" /t REG_EXPAND_SZ /f
+		REM ~ reg add !s! /ve /d "" /t REG_SZ /f
+	)
+)
+```
+
+
+
 ### OPENMP
 ```c
 
