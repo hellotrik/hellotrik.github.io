@@ -173,7 +173,7 @@ reg add HKCR\.cpp /v "PerceivedType" /t REG_SZ /f /d "text"
 reg add HKCR\.hpp /v "PerceivedType" /t REG_SZ /f /d "text"
 reg add HKCR\.py /v "PerceivedType" /t REG_SZ /f /d "text"
 reg add HKCR\.java /v "PerceivedType" /t REG_SZ /f /d "text"
-
+reg delete HKCR\Python.file\Shell\editwithidle /f
 reg add HKCR\Python.file\Shell\edit\command /ve /t REG_EXPAND_SZ /f /d "%%ProgramFiles(x86)%%\AutoIt3\SciTE\SciTE.exe %%1"
 for /f %%i in ('reg query HKCR /f edit /e /s /k') do (
 	set s=%%i & if not "!s:~,4!"=="搜索结束" (
