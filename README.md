@@ -1,3 +1,4 @@
+[![Image](https://avatars3.githubusercontent.com/u/20605668?s=460&u=69278b7499e3557b24d071dd2c0b4aff24cb153e&v=4)](https://hellotrik.github.io/trik)
 ## mini深度框架 trik 已发布
 ```sh
 pip install trik
@@ -212,12 +213,6 @@ for循环并行化的约束条件
 	例如：若循环体内的break或goto会跳转到循环体外，那么会编译不通过。
 */
 ```
-
-
-
-[![Image](https://avatars3.githubusercontent.com/u/20605668?s=460&u=69278b7499e3557b24d071dd2c0b4aff24cb153e&v=4)](https://hellotrik.github.io/trik)
-
-
 
 ### [Catch AISTUDIO with js](https://hellotrik.github.io/trik)
 ```javascript
