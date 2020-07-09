@@ -12,7 +12,7 @@ html {
 .clock-container {
   position: fixed;
   left: 20%;
-  top: 20%;
+  top: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   width: 480px;
