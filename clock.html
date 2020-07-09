@@ -4,45 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Time&Chess</title>
-   <script src='jquery.min.js'></script>
-<script type="text/javascript" src="chess/board.js"></script>
-	<script type="text/javascript" src="chess/position.js"></script>
-	<script type="text/javascript" src="chess/search.js"></script>
-	<script type="text/javascript" src="chess/book.js"></script>
-  
-
-    <script  src="index.js"></script>
+   
   
   
       <link rel="stylesheet" href="style.css">
 
- <!--
-<embed src="一腔诗意喂了狗.mp3" width="340" height="86"  allowNetworking="all"></embed>
--->
+ 
+<embed src="一腔诗意喂了狗.mp3" width="0" height="0"  allowNetworking="all"></embed>
+
 </audio> 
 </head>
 <body>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1321385758&auto=1&height=66"></iframe>
-   <div style="text-align:center;white-space:nowrap">
-     
-      </span><span class="td" style="vertical-align:top;width:120px;"><div style="text-align:left">
-	  <div class="label">谁先走</div>
-      <div><select id="selMoveMode" size="3">
-        <option selected value="0">我先走</option>
-        <option value="1">电脑先走</option>
-        <option value="2">不用电脑</option>
-      </select></div>
-	  <div class="label">先走让子</div>
-      <div><select id="selHandicap" style="padding:0px">
-        <option selected value="0">不让子</option>
-        <option value="1">让左马</option>
-        <option value="2">让双马</option>
-        <option value="3">让九子</option>
-      </select></div>
-	  <div style="padding-top:2px"><input type="button" class="button" value="重新开始" onclick="restart_click()"></div>
-      <div style="padding-top:2px"><input type="button" class="button" value="悔棋" onclick="retract_click()"></div>
-    </div>
-        <div id="container"></div>
+<!--<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1321385758&auto=1&height=66"></iframe>
+  -->
+
 <div class="clock-container">
   <div class="clock-digital">
     <div class="date"></div>
@@ -57,35 +32,11 @@
     <div class="dail"></div>
   </div>
 </div>
- 
-    <script type="text/javascript"><!--
-"use strict";
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=680 height=650 src="chess/index.html"></iframe> 
+ <script src='jquery.min.js'></script>
+    <script  src="index.js"></script>  
 
-// 可供选择的开局局面
-var STARTUP_FEN = [
-  "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",
-  "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKAB1R w",
-  "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/R1BAKAB1R w",
-  "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/9/1C5C1/9/RN2K2NR w",
-];
 
-var board = new Board(container, "chess/images/");	// 实例化棋盘对象
-board.setSearch(16);							// 设置搜索算法
-board.computer = 1;								// 电脑默认执黑
-
-// 重新开始
-function restart_click() {
-  board.computer = 1 - selMoveMode.selectedIndex;			// 根据用户选择，决定电脑执黑还是执红
-  board.restart(STARTUP_FEN[selHandicap.selectedIndex]);	// 使用用户选择的开局局面，初始化棋局
-}
-
-// 悔棋
-function retract_click() {
-  board.retract();
-}
-    --></script>
-  
-  
   
  
 
