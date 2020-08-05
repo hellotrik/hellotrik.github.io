@@ -6,7 +6,7 @@ pip install trik -i https://hellotrik.github.io
 cmake .. -G "Visual Studio 14 2015 Win64" -DWITH_GPU=OFF -DWITH_TESTING=OFF -DCMAKE_BUILD_TYPE=Release
 ```
 
-###设置磁盘id
+### 设置磁盘id
 ```
 请严格按照如下流程：
 
