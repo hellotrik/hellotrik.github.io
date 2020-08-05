@@ -5,6 +5,46 @@ pip install trik
 pip install trik -i https://hellotrik.github.io
 cmake .. -G "Visual Studio 14 2015 Win64" -DWITH_GPU=OFF -DWITH_TESTING=OFF -DCMAKE_BUILD_TYPE=Release
 ```
+
+###设置磁盘id
+```
+请严格按照如下流程：
+
+1 以管理员打开 硬盘安装助手
+
+2 选择苹果Mac系统镜像 （cdr格式的）
+
+3 直接选择要写入的盘，不要点击右边的方框中的勾选
+
+（此时就可以写入了，虽然最后还是显示
+
+Change partition type to AF: not a HFS partition
+Load boot1h: not a HFS partition
+Load startupfile: not a HFS partition
+All done, have fun!
+
+，不要担心）
+
+如果在写入之前改了分区类型为AF，硬盘安装助手就找不到安装盘分区了。所以应当在写入完成后再更改分区类型。
+
+
+如何更改分区类型：
+
+使用分区助手，更改分区类型按钮是灰色。此时可以这么做：
+
+依次打开，开始菜单－附件－命令提示符，输入 diskpart命令，回车，在新弹出窗口中依次输入以下命令： 
+
+list disk
+
+set disk X      (X是硬盘号码，如果只有一个 则是 0 ) 
+select disk X 
+list part 
+查看分区序号，比如说是第2个分区，依次输入以下命令： 
+sel part 2
+set id＝af 
+
+如何使用set id=af识别，使用 set id=48465300-0000-11AA-AA11-00306543ECAC override设置。
+```
 ### 设置ip
 ```
 @echo off
