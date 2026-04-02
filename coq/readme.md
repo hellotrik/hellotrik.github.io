@@ -1,3 +1,7 @@
+---
+permalink: /coq/
+---
+
 ## Coq Tactics [Index](https://holytrick.github.io)
 ```
 Stage 1 Proving Easy Goals

@@ -1,3 +1,7 @@
+---
+permalink: /bottleneck/
+---
+
 ### Building powerful image classification models using very little [data](https://holytrick.github.io)
 
 In this tutorial, we will present a few simple yet effective methods that you can use to build a powerful image classifier, using only very few training examples --just a few hundred or thousand pictures from each class you want to be able to recognize.

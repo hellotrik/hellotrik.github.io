@@ -1,1 +1,22 @@
+encoding: utf-8
 theme: jekyll-theme-cayman
+
+# 子目录「默认页」说明（Jekyll 无全局「凡 readme 即 index」开关，任选其一）：
+# 1) 推荐：该目录下放 index.md（或 index.html），访问 /子路径/ 即为此文件。
+# 2) 保留 readme.md 命名：在该文件 front matter 写 permalink: /子路径/（末尾斜杠），会生成 _site/子路径/index.html。
+# GitHub 网页端仓库里仍常见 README.md；本站构建用 permalink 即可同时满足「路径默认页」。
+
+# 普通 Markdown 页面默认套用主题布局，无需每篇写 layout: default（文件内需保留空的 --- 块，见各 .md 顶部）
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+
+# 抑制 Cayman 主题内旧式 @import / invert 等产生的 Dart Sass 弃用告警（终端刷屏，不影响生成结果）
+sass:
+  quiet_deps: true
+  silence_deprecations:
+    - import
+    - global-builtin
