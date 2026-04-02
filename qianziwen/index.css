@@ -40,6 +40,61 @@ html,body{
     transform-origin: 0% 0%;
     transition: all 1s;
 }
+.audio-player{
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 14px 16px 12px;
+    border-radius: 12px;
+    background: rgba(8, 12, 20, 0.72);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    max-width: min(440px, calc(100% - 32px));
+    box-sizing: border-box;
+    --plyr-color-main: #6ad5ff;
+    --plyr-audio-controls-background: transparent;
+    --plyr-range-thumb-background: #6ad5ff;
+    --plyr-range-fill-background: #6ad5ff;
+    --plyr-video-progress-buffered-background: rgba(106, 213, 255, 0.35);
+}
+
+.audio-player__meta{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+}
+
+.audio-player__label{
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 0.04em;
+}
+
+.audio-player__hint{
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: normal;
+}
+
+.audio-player .plyr{
+    width: 100%;
+    min-width: 0;
+}
+
+.audio-player .plyr--audio .plyr__controls{
+    padding: 8px 4px 4px;
+    border-radius: 8px;
+}
+
 .text{
     position: absolute;
     left: 50px;
