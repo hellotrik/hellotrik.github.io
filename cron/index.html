@@ -1,0 +1,113 @@
+<!-- 补天与“浴日”之伟力；用于重塑天地结构与调理天象（设定层面）。 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cron 表达式解析与配置</title>
+    <script>
+        (function () {
+            try {
+                var theme = localStorage.getItem('cron-theme');
+                if (theme === 'light' || theme === 'dark' || theme === 'auto') {
+                    document.documentElement.setAttribute('data-theme', theme);
+                }
+            } catch (e) { /* ignore */ }
+        })();
+    </script>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <header class="page-header">
+        <div class="page-header__top">
+            <h1>Cron 表达式解析与配置</h1>
+            <div class="theme-picker" role="radiogroup" aria-label="主题">
+                <label class="theme-picker__item">
+                    <input type="radio" name="theme" value="light">
+                    <span>浅色</span>
+                </label>
+                <label class="theme-picker__item">
+                    <input type="radio" name="theme" value="dark" checked>
+                    <span>深色</span>
+                </label>
+                <label class="theme-picker__item">
+                    <input type="radio" name="theme" value="auto">
+                    <span>跟随系统</span>
+                </label>
+            </div>
+        </div>
+        <p class="page-header__sub">支持 Linux Crontab、Java / Spring、Quartz 三种字段规范</p>
+    </header>
+
+    <main class="layout">
+        <section class="panel panel--builder" aria-labelledby="builder-title">
+            <div class="panel__head">
+                <h2 id="builder-title">可视化配置</h2>
+                <div class="format-picker" role="radiogroup" aria-label="Cron 格式">
+                    <label class="format-picker__item">
+                        <input type="radio" name="cron-format" value="linux">
+                        <span>Linux</span>
+                    </label>
+                    <label class="format-picker__item">
+                        <input type="radio" name="cron-format" value="java" checked>
+                        <span>Java</span>
+                    </label>
+                    <label class="format-picker__item">
+                        <input type="radio" name="cron-format" value="quartz">
+                        <span>Quartz</span>
+                    </label>
+                </div>
+            </div>
+            <p class="format-hint" id="format-hint"></p>
+            <div class="presets" aria-label="常用模板">
+                <button type="button" class="preset" data-preset="every-minute">每分钟</button>
+                <button type="button" class="preset" data-preset="hourly">每小时整点</button>
+                <button type="button" class="preset" data-preset="daily-midnight">每天 0 点</button>
+                <button type="button" class="preset" data-preset="weekday-9">工作日 9 点</button>
+                <button type="button" class="preset" data-preset="monthly-1">每月 1 号 0 点</button>
+                <button type="button" class="preset" data-preset="sunday">每周日 0 点</button>
+            </div>
+            <div class="field-grid" id="field-grid"></div>
+        </section>
+
+        <section class="panel panel--expr" aria-labelledby="expr-title">
+            <h2 id="expr-title">Cron 表达式</h2>
+            <div class="expr-row">
+                <input type="text" id="cron-input" class="expr-input" spellcheck="false"
+                    placeholder="0 0 * * *" autocomplete="off" aria-label="Cron 表达式">
+                <button type="button" id="btn-parse" class="btn btn--primary">解析</button>
+                <button type="button" id="btn-copy" class="btn">复制</button>
+            </div>
+            <p class="expr-hint">切换格式会更新字段数量；含 <code>?</code> / <code>MON-FRI</code> 等扩展语法时，下次执行时间为近似预览</p>
+
+            <h3 class="sub-title">字段拆解</h3>
+            <table class="field-table" id="field-table">
+                <thead>
+                    <tr>
+                        <th>字段</th>
+                        <th>取值</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody id="field-table-body"></tbody>
+            </table>
+
+            <h3 class="sub-title">语义说明</h3>
+            <p class="human-desc" id="human-desc">—</p>
+
+            <h3 class="sub-title">接下来 8 次执行（本地时区）</h3>
+            <ol class="next-runs" id="next-runs"></ol>
+            <p class="status status--warn" id="status-warn" hidden></p>
+            <p class="status status--error" id="status-error" hidden></p>
+        </section>
+    </main>
+
+    <footer class="page-footer">
+        <span>时区：<strong id="tz-label"></strong></span>
+        <span>引擎：Croner（本地 vendor，扩展语法会归一化后试算）</span>
+    </footer>
+
+    <script src="./vendor/croner.umd.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
