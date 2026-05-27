@@ -1,0 +1,149 @@
+<!-- 云篆太虚，浩劫之初；用于开经演道、阐明网络地址之奥义。 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../icon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <title>CIDR 子网计算器</title>
+    <script>
+        (function () {
+            try {
+                var theme = localStorage.getItem('cidr-theme');
+                if (theme === 'light' || theme === 'dark' || theme === 'auto') {
+                    document.documentElement.setAttribute('data-theme', theme);
+                }
+            } catch (e) { /* ignore */ }
+        })();
+    </script>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <header class="page-header">
+        <div class="page-header__top">
+            <h1>CIDR 子网计算器</h1>
+            <div class="theme-picker" role="radiogroup" aria-label="主题">
+                <label class="theme-picker__item">
+                    <input type="radio" name="theme" value="light">
+                    <span>浅色</span>
+                </label>
+                <label class="theme-picker__item">
+                    <input type="radio" name="theme" value="dark" checked>
+                    <span>深色</span>
+                </label>
+                <label class="theme-picker__item">
+                    <input type="radio" name="theme" value="auto">
+                    <span>跟随系统</span>
+                </label>
+            </div>
+        </div>
+        <p class="page-header__sub">解析 IPv4 CIDR，计算子网掩码、网络/广播地址与可用主机范围</p>
+    </header>
+
+    <main class="layout">
+        <section class="panel panel--input" aria-labelledby="input-title">
+            <h2 id="input-title">输入</h2>
+            <div class="input-group">
+                <label class="input-label" for="ip-input">IP 地址</label>
+                <input type="text" id="ip-input" class="text-input" spellcheck="false"
+                    placeholder="192.168.1.1 或 192.168.1.0/24" autocomplete="off"
+                    value="192.168.1.1" aria-describedby="ip-hint">
+                <p class="input-hint" id="ip-hint">支持点分十进制，或在同一框内输入 <code>地址/前缀</code></p>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label" for="prefix-range">CIDR 前缀 <span id="prefix-label" class="prefix-badge">/24</span></label>
+                <input type="range" id="prefix-range" class="prefix-range" min="0" max="32" value="24"
+                    aria-valuemin="0" aria-valuemax="32" aria-valuenow="24">
+                <div class="prefix-quick" role="group" aria-label="常用前缀">
+                    <button type="button" class="prefix-btn" data-prefix="0">/0</button>
+                    <button type="button" class="prefix-btn" data-prefix="8">/8</button>
+                    <button type="button" class="prefix-btn" data-prefix="16">/16</button>
+                    <button type="button" class="prefix-btn" data-prefix="24">/24</button>
+                    <button type="button" class="prefix-btn" data-prefix="32">/32</button>
+                </div>
+            </div>
+
+            <div class="input-actions">
+                <button type="button" id="btn-calc" class="btn btn--primary">计算</button>
+                <button type="button" id="btn-copy-cidr" class="btn">复制 CIDR</button>
+            </div>
+            <p class="status status--error" id="status-error" hidden></p>
+        </section>
+
+        <section class="panel panel--result" aria-labelledby="result-title">
+            <h2 id="result-title">子网信息</h2>
+            <div class="stat-grid" id="stat-grid">
+                <div class="stat-card">
+                    <span class="stat-card__label">子网掩码</span>
+                    <span class="stat-card__value" id="out-mask">—</span>
+                    <button type="button" class="copy-chip" data-copy="out-mask" title="复制">复制</button>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-card__label">通配符掩码</span>
+                    <span class="stat-card__value" id="out-wildcard">—</span>
+                    <button type="button" class="copy-chip" data-copy="out-wildcard" title="复制">复制</button>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-card__label">网络地址</span>
+                    <span class="stat-card__value" id="out-network">—</span>
+                    <button type="button" class="copy-chip" data-copy="out-network" title="复制">复制</button>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-card__label">广播地址</span>
+                    <span class="stat-card__value" id="out-broadcast">—</span>
+                    <button type="button" class="copy-chip" data-copy="out-broadcast" title="复制">复制</button>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-card__label">总主机数</span>
+                    <span class="stat-card__value stat-card__value--num" id="out-total">—</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-card__label">可用主机数</span>
+                    <span class="stat-card__value stat-card__value--num" id="out-usable">—</span>
+                </div>
+            </div>
+
+            <h3 class="sub-title">详细范围与属性</h3>
+            <table class="detail-table" id="detail-table">
+                <tbody>
+                    <tr>
+                        <th scope="row">首个可用 IP</th>
+                        <td id="out-first">—</td>
+                        <td><button type="button" class="copy-chip" data-copy="out-first">复制</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">最后可用 IP</th>
+                        <td id="out-last">—</td>
+                        <td><button type="button" class="copy-chip" data-copy="out-last">复制</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">IP 类别</th>
+                        <td colspan="2" id="out-class">—</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">地址属性</th>
+                        <td colspan="2" id="out-flags">—</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">二进制 IP</th>
+                        <td colspan="2"><code class="binary-ip" id="out-binary">—</code></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">CIDR 表示</th>
+                        <td colspan="2"><code id="out-cidr">—</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer class="page-footer">
+        <span>仅支持 IPv4；/31、/32 按 RFC 惯例处理可用主机数</span>
+        <span>计算在本地浏览器完成，不上传任何地址</span>
+    </footer>
+
+    <script src="./index.js"></script>
+</body>
+</html>
