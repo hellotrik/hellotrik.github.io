@@ -5,6 +5,11 @@ title: 词不达意
 ---
 [![Image](https://avatars3.githubusercontent.com/u/20605668?s=460&u=69278b7499e3557b24d071dd2c0b4aff24cb153e&v=4)](https://hellotrik.github.io/clock)
 
+## 工具面板
+
+- **[Cron 表达式解析]({{ '/cron/' | relative_url }})** — Linux / Java / Quartz 可视化配置，字段拆解与下次执行预览
+- **[CIDR 子网计算器]({{ '/cidr/' | relative_url }})** — IPv4 子网掩码、网络/广播地址与可用主机范围，本地计算
+
 ### 了无趣
 ```js
 谈笑了无趣,弄弦知己忧
