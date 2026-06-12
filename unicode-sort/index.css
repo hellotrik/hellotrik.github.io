@@ -33,12 +33,17 @@
     --sample-emoji-bg: rgba(125, 211, 252, 0.14);
     --sample-short: #c0c0c0;
     --sample-short-bg: rgba(192, 192, 192, 0.1);
-    --action-sort-from: #4a6fa5;
-    --action-sort-to: #3a5880;
+    --action-sort-face: linear-gradient(165deg, rgba(74, 111, 165, 0.42) 0%, rgba(58, 88, 128, 0.62) 55%, rgba(24, 38, 64, 0.5) 100%);
+    --action-sort-face-hover: linear-gradient(165deg, rgba(74, 111, 165, 0.52) 0%, rgba(58, 88, 128, 0.72) 100%);
+    --action-sort-face-active: linear-gradient(165deg, rgba(58, 88, 128, 0.72) 0%, rgba(74, 111, 165, 0.48) 100%);
+    --action-sort-rim: rgba(212, 228, 247, 0.28);
     --action-sort-text: #fafafa;
-    --action-sort-glow: rgba(74, 111, 165, 0.35);
-    --action-sort-icon-color: #ffffff;
-    --action-sort-icon-bg: rgba(255, 255, 255, 0.22);
+    --action-sort-glow: rgba(74, 111, 165, 0.28);
+    --action-sort-icon-face: linear-gradient(180deg, rgba(106, 143, 199, 0.95) 0%, rgba(58, 88, 128, 0.95) 100%);
+    --action-sort-icon-text: #ffffff;
+    --action-sort-raise: 0 2px 8px rgba(0, 0, 0, 0.2), 0 0 14px var(--action-sort-glow), inset 0 1px 0 rgba(212, 228, 247, 0.22);
+    --action-sort-raise-hover: 0 0 20px var(--action-sort-glow), 0 4px 12px rgba(74, 111, 165, 0.24), inset 0 1px 0 rgba(212, 228, 247, 0.32);
+    --action-sort-raise-press: inset 0 2px 6px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(212, 228, 247, 0.12);
     --action-clear-text: #c0c0c0;
     --action-clear-border: rgba(192, 192, 192, 0.32);
     --action-clear-bg: rgba(192, 192, 192, 0.1);
@@ -78,12 +83,17 @@
     --sample-emoji-bg: rgba(2, 132, 199, 0.1);
     --sample-short: #6b7f96;
     --sample-short-bg: rgba(192, 192, 192, 0.22);
-    --action-sort-from: #4a6fa5;
-    --action-sort-to: #3d5d8a;
-    --action-sort-text: #fafafa;
-    --action-sort-glow: rgba(74, 111, 165, 0.28);
-    --action-sort-icon-color: #ffffff;
-    --action-sort-icon-bg: rgba(255, 255, 255, 0.32);
+    --action-sort-face: linear-gradient(165deg, #eef2f9 0%, #d4e4f7 42%, #b8cce8 100%);
+    --action-sort-face-hover: linear-gradient(165deg, #f4f7fc 0%, #dce8f5 42%, #aec4de 100%);
+    --action-sort-face-active: linear-gradient(165deg, #b8cce8 0%, #d4e4f7 58%, #eef2f9 100%);
+    --action-sort-rim: rgba(74, 111, 165, 0.32);
+    --action-sort-text: #4a6fa5;
+    --action-sort-glow: rgba(74, 111, 165, 0.14);
+    --action-sort-icon-face: linear-gradient(180deg, rgba(106, 143, 199, 0.95) 0%, rgba(74, 111, 165, 0.95) 100%);
+    --action-sort-icon-text: #fafafa;
+    --action-sort-raise: 0 3px 0 rgba(74, 111, 165, 0.16), 0 4px 10px rgba(74, 111, 165, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    --action-sort-raise-hover: 0 4px 0 rgba(74, 111, 165, 0.2), 0 6px 14px rgba(74, 111, 165, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    --action-sort-raise-press: inset 0 2px 5px rgba(74, 111, 165, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.5);
     --action-clear-text: #5a7394;
     --action-clear-border: rgba(74, 111, 165, 0.18);
     --action-clear-bg: rgba(212, 228, 247, 0.45);
@@ -124,12 +134,17 @@
         --sample-emoji-bg: rgba(2, 132, 199, 0.1);
         --sample-short: #6b7f96;
         --sample-short-bg: rgba(192, 192, 192, 0.22);
-        --action-sort-from: #4a6fa5;
-        --action-sort-to: #3d5d8a;
-        --action-sort-text: #fafafa;
-        --action-sort-glow: rgba(74, 111, 165, 0.28);
-        --action-sort-icon-color: #ffffff;
-        --action-sort-icon-bg: rgba(255, 255, 255, 0.32);
+        --action-sort-face: linear-gradient(165deg, #eef2f9 0%, #d4e4f7 42%, #b8cce8 100%);
+        --action-sort-face-hover: linear-gradient(165deg, #f4f7fc 0%, #dce8f5 42%, #aec4de 100%);
+        --action-sort-face-active: linear-gradient(165deg, #b8cce8 0%, #d4e4f7 58%, #eef2f9 100%);
+        --action-sort-rim: rgba(74, 111, 165, 0.32);
+        --action-sort-text: #4a6fa5;
+        --action-sort-glow: rgba(74, 111, 165, 0.14);
+        --action-sort-icon-face: linear-gradient(180deg, rgba(106, 143, 199, 0.95) 0%, rgba(74, 111, 165, 0.95) 100%);
+        --action-sort-icon-text: #fafafa;
+        --action-sort-raise: 0 3px 0 rgba(74, 111, 165, 0.16), 0 4px 10px rgba(74, 111, 165, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        --action-sort-raise-hover: 0 4px 0 rgba(74, 111, 165, 0.2), 0 6px 14px rgba(74, 111, 165, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+        --action-sort-raise-press: inset 0 2px 5px rgba(74, 111, 165, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.5);
         --action-clear-text: #5a7394;
         --action-clear-border: rgba(74, 111, 165, 0.18);
         --action-clear-bg: rgba(212, 228, 247, 0.45);
@@ -170,12 +185,17 @@
         --sample-emoji-bg: rgba(125, 211, 252, 0.14);
         --sample-short: #c0c0c0;
         --sample-short-bg: rgba(192, 192, 192, 0.1);
-        --action-sort-from: #4a6fa5;
-        --action-sort-to: #3a5880;
+        --action-sort-face: linear-gradient(165deg, rgba(74, 111, 165, 0.42) 0%, rgba(58, 88, 128, 0.62) 55%, rgba(24, 38, 64, 0.5) 100%);
+        --action-sort-face-hover: linear-gradient(165deg, rgba(74, 111, 165, 0.52) 0%, rgba(58, 88, 128, 0.72) 100%);
+        --action-sort-face-active: linear-gradient(165deg, rgba(58, 88, 128, 0.72) 0%, rgba(74, 111, 165, 0.48) 100%);
+        --action-sort-rim: rgba(212, 228, 247, 0.28);
         --action-sort-text: #fafafa;
-        --action-sort-glow: rgba(74, 111, 165, 0.35);
-        --action-sort-icon-color: #ffffff;
-        --action-sort-icon-bg: rgba(255, 255, 255, 0.22);
+        --action-sort-glow: rgba(74, 111, 165, 0.28);
+        --action-sort-icon-face: linear-gradient(180deg, rgba(106, 143, 199, 0.95) 0%, rgba(58, 88, 128, 0.95) 100%);
+        --action-sort-icon-text: #ffffff;
+        --action-sort-raise: 0 2px 8px rgba(0, 0, 0, 0.2), 0 0 14px var(--action-sort-glow), inset 0 1px 0 rgba(212, 228, 247, 0.22);
+        --action-sort-raise-hover: 0 0 20px var(--action-sort-glow), 0 4px 12px rgba(74, 111, 165, 0.24), inset 0 1px 0 rgba(212, 228, 247, 0.32);
+        --action-sort-raise-press: inset 0 2px 6px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(212, 228, 247, 0.12);
         --action-clear-text: #c0c0c0;
         --action-clear-border: rgba(192, 192, 192, 0.32);
         --action-clear-bg: rgba(192, 192, 192, 0.1);
@@ -732,57 +752,32 @@ body {
 }
 
 .input-actions .btn.btn--action-sort {
-    border: 1px solid rgba(212, 228, 247, 0.35);
+    border: 1px solid var(--action-sort-rim);
     color: var(--action-sort-text);
-    background: linear-gradient(165deg, var(--action-sort-from) 0%, var(--action-sort-to) 100%);
-    box-shadow:
-        0 2px 10px var(--action-sort-glow),
-        inset 0 1px 0 rgba(212, 228, 247, 0.35);
+    background: var(--action-sort-face);
+    box-shadow: var(--action-sort-raise);
 }
 
 .input-actions .btn.btn--action-sort .btn__icon {
-    background: var(--action-sort-icon-bg);
-    color: var(--action-sort-icon-color);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    background: var(--action-sort-icon-face);
+    color: var(--action-sort-icon-text);
+    border: 1px solid rgba(212, 228, 247, 0.3);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
     font-weight: 700;
-}
-
-[data-theme="light"] .input-actions .btn.btn--action-sort {
-    background-color: var(--sample-emoji-bg);
-    background: linear-gradient(165deg, rgba(196, 227, 242, 1) 0%, rgba(171, 186, 206, 1) 100%);
-}
-
-[data-theme="light"] .input-actions .btn.btn--action-sort .btn__icon {
-    background: unset;
-    background-color: var(--action-sort-from);
-}
-
-@media (prefers-color-scheme: light) {
-    [data-theme="auto"] .input-actions .btn.btn--action-sort {
-        background-color: var(--sample-emoji-bg);
-        background: linear-gradient(165deg, rgba(196, 227, 242, 1) 0%, rgba(171, 186, 206, 1) 100%);
-    }
-
-    [data-theme="auto"] .input-actions .btn.btn--action-sort .btn__icon {
-        background: unset;
-        background-color: var(--action-sort-from);
-    }
 }
 
 .input-actions .btn.btn--action-sort:hover:not(:disabled),
 .input-actions .btn.btn--action-sort:focus-visible:not(:disabled) {
     color: var(--action-sort-text);
-    background: linear-gradient(165deg, var(--action-sort-from) 0%, var(--action-sort-to) 100%);
+    background: var(--action-sort-face-hover);
     border-color: var(--tf-ice);
-    box-shadow:
-        0 0 18px var(--action-sort-glow),
-        0 4px 14px rgba(74, 111, 165, 0.32),
-        inset 0 1px 0 rgba(212, 228, 247, 0.4);
+    box-shadow: var(--action-sort-raise-hover);
 }
 
 .input-actions .btn.btn--action-sort:active:not(:disabled) {
     color: var(--action-sort-text);
-    background: linear-gradient(165deg, var(--action-sort-to) 0%, var(--action-sort-from) 100%);
+    background: var(--action-sort-face-active);
+    box-shadow: var(--action-sort-raise-press);
     transform: translateY(1px);
 }
 
@@ -794,8 +789,9 @@ body {
 }
 
 .input-actions .btn.btn--action-clear .btn__icon {
-    background: rgba(192, 192, 192, 0.12);
+    background: linear-gradient(180deg, rgba(224, 224, 224, 0.14) 0%, rgba(192, 192, 192, 0.1) 100%);
     color: var(--action-clear-text);
+    border: 1px solid rgba(192, 192, 192, 0.2);
     font-size: 0.6875rem;
 }
 
