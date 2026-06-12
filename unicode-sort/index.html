@@ -124,6 +124,23 @@
 
             <p class="result-summary" id="result-summary">输入文本后自动排序</p>
 
+            <div class="find-position" role="search">
+                <label class="find-position__label" for="find-char">查询位置</label>
+                <div class="find-position__control">
+                    <input type="text" id="find-char" class="find-position__input" spellcheck="false"
+                        placeholder="输入或粘贴字符，Enter 定位" aria-describedby="find-hint" autocomplete="off"
+                        inputmode="text" enterkeyhint="search">
+                    <button type="button" id="btn-find-paste" class="btn btn--find-paste" title="从剪贴板粘贴">
+                        粘贴
+                    </button>
+                    <button type="button" id="btn-find" class="btn btn--find">
+                        <span class="btn__icon" aria-hidden="true">⌖</span>
+                        定位
+                    </button>
+                </div>
+                <p class="find-position__hint" id="find-hint" aria-live="polite"></p>
+            </div>
+
             <div class="char-grid" id="char-grid" role="list" aria-label="排序后的单字列表"></div>
         </section>
     </main>

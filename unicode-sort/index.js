@@ -20,12 +20,17 @@
         copyModeRadios: document.querySelectorAll('input[name="copy-mode"]'),
         resultSummary: document.getElementById('result-summary'),
         charGrid: document.getElementById('char-grid'),
+        findChar: document.getElementById('find-char'),
+        btnFindPaste: document.getElementById('btn-find-paste'),
+        btnFind: document.getElementById('btn-find'),
+        findHint: document.getElementById('find-hint'),
         toast: document.getElementById('toast')
     };
 
     var state = {
         items: [],
-        toastTimer: null
+        toastTimer: null,
+        locatedIndex: -1
     };
 
     function splitCodePoints(text) {
@@ -146,6 +151,102 @@
         document.body.removeChild(ta);
     }
 
+    function normalizeFindQuery(text) {
+        var points = splitCodePoints(String(text || '').replace(/\s/g, ''));
+        return points.length > 0 ? points[0].char : '';
+    }
+
+    function applyFindQuery(text, options) {
+        dom.findChar.value = normalizeFindQuery(text);
+        if (!dom.findChar.value) return;
+        refreshFindPosition(options || { silent: false, scroll: true });
+    }
+
+    function pasteIntoFindField() {
+        if (navigator.clipboard && navigator.clipboard.readText) {
+            navigator.clipboard.readText()
+                .then(function (text) {
+                    applyFindQuery(text, { silent: false, scroll: true });
+                })
+                .catch(function () {
+                    dom.findChar.focus();
+                    showToast('无法读取剪贴板，请聚焦输入框后 ⌘V');
+                });
+            return;
+        }
+        dom.findChar.focus();
+        showToast('请聚焦输入框后使用 ⌘V / Ctrl+V 粘贴');
+    }
+
+    function clearLocatedChips() {
+        dom.charGrid.querySelectorAll('.char-chip.is-located').forEach(function (chip) {
+            chip.classList.remove('is-located');
+        });
+        state.locatedIndex = -1;
+    }
+
+    function setFindHint(message) {
+        dom.findHint.textContent = message || '';
+    }
+
+    function findIndexByCode(code) {
+        for (var i = 0; i < state.items.length; i++) {
+            if (state.items[i].code === code) return i;
+        }
+        return -1;
+    }
+
+    function refreshFindPosition(options) {
+        var silent = !!(options && options.silent);
+        var shouldScroll = !options || options.scroll !== false;
+        var query = dom.findChar.value;
+        var points = splitCodePoints(query);
+
+        if (points.length === 0) {
+            if (!silent) {
+                setFindHint('');
+                showToast('请输入要查询的字符');
+            }
+            return;
+        }
+
+        var target = points[0];
+        if (state.items.length === 0) {
+            clearLocatedChips();
+            setFindHint('');
+            if (!silent) showToast('暂无排序结果');
+            return;
+        }
+
+        var index = findIndexByCode(target.code);
+        if (index === -1) {
+            clearLocatedChips();
+            setFindHint('未找到「' + target.char + '」 · ' + formatUnicode(target.code));
+            if (!silent) showToast('结果中无此字符（可能被去重或跳过空白）');
+            return;
+        }
+
+        var chips = dom.charGrid.querySelectorAll('.char-chip');
+        var chip = chips[index];
+        if (!chip) return;
+
+        clearLocatedChips();
+        chip.classList.add('is-located');
+        state.locatedIndex = index;
+        if (shouldScroll) {
+            chip.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+            chip.focus({ preventScroll: true });
+        }
+
+        var positionText = '第 ' + (index + 1) + ' / ' + state.items.length + ' 位 · ' + formatUnicode(target.code);
+        setFindHint('「' + target.char + '」 · ' + positionText);
+        if (!silent) showToast('已定位：' + positionText);
+    }
+
+    function findCharacterPosition() {
+        refreshFindPosition({ silent: false, scroll: true });
+    }
+
     function flashChip(chip) {
         chip.classList.add('is-copied');
         setTimeout(function () {
@@ -161,6 +262,9 @@
             var chip = document.createElement('button');
             chip.type = 'button';
             chip.className = 'char-chip';
+            chip.dataset.index = String(index);
+            chip.dataset.code = String(item.code);
+
             chip.setAttribute('role', 'listitem');
             chip.title = getChipTitle(item);
 
@@ -191,6 +295,11 @@
                 chip.appendChild(meta);
             }
 
+            chip.addEventListener('dblclick', function (event) {
+                event.preventDefault();
+                applyFindQuery(item.char, { silent: false, scroll: true });
+            });
+
             chip.addEventListener('click', function () {
                 var payload = getCopyPayload(item);
                 copyText(payload.text, function () {
@@ -201,6 +310,10 @@
 
             dom.charGrid.appendChild(chip);
         });
+
+        if (dom.findChar.value.trim()) {
+            refreshFindPosition({ silent: true, scroll: false });
+        }
     }
 
     function renderSummary(items, options) {
@@ -335,9 +448,32 @@
 
         dom.btnClear.addEventListener('click', function () {
             dom.textInput.value = '';
+            dom.findChar.value = '';
+            setFindHint('');
+            clearLocatedChips();
             updateInputStats();
             sortAndRender();
             dom.textInput.focus();
+        });
+
+        dom.btnFind.addEventListener('click', findCharacterPosition);
+
+        dom.btnFindPaste.addEventListener('click', pasteIntoFindField);
+
+        dom.findChar.addEventListener('paste', function (event) {
+            var clipboard = event.clipboardData || window.clipboardData;
+            if (!clipboard) return;
+            var text = clipboard.getData('text/plain');
+            if (!text) return;
+            event.preventDefault();
+            applyFindQuery(text, { silent: false, scroll: true });
+        });
+
+        dom.findChar.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                findCharacterPosition();
+            }
         });
 
         dom.copyModeRadios.forEach(function (radio) {
