@@ -1,0 +1,126 @@
+<!-- 飞身托迹：遁身天地之间、不可观不可查；用于 Unicode 字序排列与托迹潜行。sourceKind: spell -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../icon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <title>凝冰 · Unicode 字序</title>
+    <script>
+        (function () {
+            try {
+                var theme = localStorage.getItem('unicode-sort-theme');
+                if (theme === 'light' || theme === 'dark' || theme === 'auto') {
+                    document.documentElement.setAttribute('data-theme', theme);
+                }
+            } catch (e) { /* ignore */ }
+        })();
+    </script>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="aurora" aria-hidden="true"></div>
+    <div class="ice-dust" aria-hidden="true"></div>
+
+    <header class="page-header">
+        <div class="page-header__brand">
+            <span class="brand-mark" aria-hidden="true">❄</span>
+            <div>
+                <h1>凝冰 · Unicode 字序</h1>
+                <p class="page-header__sub">将文本拆解为码点，按 Unicode 数值排序，单字一键复制</p>
+            </div>
+        </div>
+        <div class="theme-picker" role="radiogroup" aria-label="主题">
+            <label class="theme-picker__item">
+                <input type="radio" name="theme" value="light">
+                <span>霜白</span>
+            </label>
+            <label class="theme-picker__item">
+                <input type="radio" name="theme" value="dark" checked>
+                <span>玄冰</span>
+            </label>
+            <label class="theme-picker__item">
+                <input type="radio" name="theme" value="auto">
+                <span>随系统</span>
+            </label>
+        </div>
+    </header>
+
+    <main class="layout">
+        <section class="panel panel--input glass" aria-labelledby="input-title">
+            <h2 id="input-title">原文</h2>
+            <div class="input-group">
+                <label class="input-label" for="text-input">输入文本</label>
+                <textarea id="text-input" class="text-area" rows="6" spellcheck="false"
+                    placeholder="粘贴或输入任意文本，支持 emoji、汉字、符号…">凝冰 alaya 排序测试 🧊✨</textarea>
+                <p class="input-hint" id="input-stats">0 字 · 0 码点</p>
+            </div>
+
+            <div class="sample-group" role="group" aria-label="测试样例">
+                <span class="sample-group__label">测试样例</span>
+                <button type="button" id="btn-sample-qzw" class="btn btn--sample">千字文</button>
+                <button type="button" id="btn-sample-short" class="btn btn--sample">短句</button>
+            </div>
+
+            <fieldset class="option-group">
+                <legend class="option-group__title">排序选项</legend>
+                <label class="option-chip">
+                    <input type="checkbox" id="opt-dedupe" checked>
+                    <span>去重</span>
+                </label>
+                <label class="option-chip">
+                    <input type="checkbox" id="opt-desc">
+                    <span>降序</span>
+                </label>
+                <label class="option-chip">
+                    <input type="checkbox" id="opt-skip-space" checked>
+                    <span>跳过空白</span>
+                </label>
+                <label class="option-chip">
+                    <input type="checkbox" id="opt-show-code" checked>
+                    <span>显示码点</span>
+                </label>
+            </fieldset>
+
+            <div class="input-actions">
+                <button type="button" id="btn-sort" class="btn btn--primary">
+                    <span class="btn__icon" aria-hidden="true">⟡</span>
+                    排序
+                </button>
+                <button type="button" id="btn-clear" class="btn">清空</button>
+            </div>
+        </section>
+
+        <section class="panel panel--result glass" aria-labelledby="result-title">
+            <div class="result-head">
+                <h2 id="result-title">排序结果</h2>
+                <div class="copy-mode" role="radiogroup" aria-label="点击字块复制">
+                    <label class="copy-mode__item">
+                        <input type="radio" name="copy-mode" value="char" checked>
+                        <span>字</span>
+                    </label>
+                    <label class="copy-mode__item">
+                        <input type="radio" name="copy-mode" value="code">
+                        <span>码点</span>
+                    </label>
+                </div>
+            </div>
+
+            <p class="result-summary" id="result-summary">输入文本后自动排序</p>
+
+            <div class="char-grid" id="char-grid" role="list" aria-label="排序后的单字列表"></div>
+        </section>
+    </main>
+
+    <footer class="page-footer">
+        <span>全部在本地浏览器完成，不上传文本</span>
+        <span>排序依据 Unicode 标量值（code point）</span>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <script src="./samples.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>

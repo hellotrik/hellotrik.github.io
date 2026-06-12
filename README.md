@@ -9,6 +9,7 @@ title: 词不达意
 
 - **[Cron 表达式解析]({{ '/cron/' | relative_url }})** — Linux / Java / Quartz 可视化配置，字段拆解与下次执行预览
 - **[CIDR 子网计算器]({{ '/cidr/' | relative_url }})** — IPv4 子网掩码、网络/广播地址与可用主机范围，本地计算
+- **[凝冰 · Unicode 字序]({{ '/unicode-sort/' | relative_url }})** — 文本按 Unicode 码点排序，字块点击复制字或码点
 
 ### 了无趣
 ```js
