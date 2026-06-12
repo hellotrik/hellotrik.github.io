@@ -15,6 +15,7 @@
         btnSort: document.getElementById('btn-sort'),
         btnClear: document.getElementById('btn-clear'),
         btnSampleQzw: document.getElementById('btn-sample-qzw'),
+        btnSampleEmoji: document.getElementById('btn-sample-emoji'),
         btnSampleShort: document.getElementById('btn-sample-short'),
         copyModeRadios: document.querySelectorAll('input[name="copy-mode"]'),
         resultSummary: document.getElementById('result-summary'),
@@ -213,14 +214,43 @@
             items.length + ' 个单字 · ' + order + ' · ' + range;
     }
 
-    function loadSample(key) {
-        var samples = window.UNICODE_SORT_SAMPLES || {};
-        var text = samples[key];
-        if (!text) return;
+    var SAMPLE_TOAST = {
+        qianziwen: '已载入千字文（1000 字）',
+        emoji: '已载入 emoji（1816 个）',
+        short: '已载入短句样例'
+    };
+
+    var SAMPLE_FILE = {
+        emoji: './samples/emoji.txt'
+    };
+
+    function applySampleText(text, key) {
         dom.textInput.value = text;
         updateInputStats();
         sortAndRender();
-        showToast(key === 'qianziwen' ? '已载入千字文（1000 字）' : '已载入短句样例');
+        showToast(SAMPLE_TOAST[key] || '已载入样例');
+    }
+
+    function loadSample(key) {
+        var file = SAMPLE_FILE[key];
+        if (file) {
+            fetch(file)
+                .then(function (res) {
+                    if (!res.ok) throw new Error('fetch failed');
+                    return res.text();
+                })
+                .then(function (text) {
+                    applySampleText(text, key);
+                })
+                .catch(function () {
+                    showToast('样例加载失败');
+                });
+            return;
+        }
+        var samples = window.UNICODE_SORT_SAMPLES || {};
+        var text = samples[key];
+        if (!text) return;
+        applySampleText(text, key);
     }
 
     function sortAndRender() {
@@ -293,6 +323,10 @@
 
         dom.btnSampleQzw.addEventListener('click', function () {
             loadSample('qianziwen');
+        });
+
+        dom.btnSampleEmoji.addEventListener('click', function () {
+            loadSample('emoji');
         });
 
         dom.btnSampleShort.addEventListener('click', function () {

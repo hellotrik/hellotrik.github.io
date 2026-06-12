@@ -59,8 +59,20 @@
 
             <div class="sample-group" role="group" aria-label="测试样例">
                 <span class="sample-group__label">测试样例</span>
-                <button type="button" id="btn-sample-qzw" class="btn btn--sample">千字文</button>
-                <button type="button" id="btn-sample-short" class="btn btn--sample">短句</button>
+                <div class="sample-group__buttons">
+                    <button type="button" id="btn-sample-qzw" class="btn btn--sample btn--sample-qzw">
+                        <span class="btn--sample__mark" aria-hidden="true">文</span>
+                        千字文
+                    </button>
+                    <button type="button" id="btn-sample-emoji" class="btn btn--sample btn--sample-emoji">
+                        <span class="btn--sample__mark" aria-hidden="true">😀</span>
+                        emoji
+                    </button>
+                    <button type="button" id="btn-sample-short" class="btn btn--sample btn--sample-short">
+                        <span class="btn--sample__mark" aria-hidden="true">✦</span>
+                        短句
+                    </button>
+                </div>
             </div>
 
             <fieldset class="option-group">
@@ -84,11 +96,14 @@
             </fieldset>
 
             <div class="input-actions">
-                <button type="button" id="btn-sort" class="btn btn--primary">
-                    <span class="btn__icon" aria-hidden="true">⟡</span>
+                <button type="button" id="btn-sort" class="btn btn--action btn--action-sort">
+                    <span class="btn__icon" aria-hidden="true">✦</span>
                     排序
                 </button>
-                <button type="button" id="btn-clear" class="btn">清空</button>
+                <button type="button" id="btn-clear" class="btn btn--action btn--action-clear">
+                    <span class="btn__icon" aria-hidden="true">⌫</span>
+                    清空
+                </button>
             </div>
         </section>
 
