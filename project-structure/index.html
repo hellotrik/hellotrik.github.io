@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../icon.ico" type="image/x-icon">
+  <title>项目结构图</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <header class="toolbar">
+    <div>
+      <h1>hellotrik.github.io 项目结构</h1>
+      <p>浏览器版画布查看器 · 数据源：<code>canvas.json</code></p>
+    </div>
+    <div class="toolbar__actions">
+      <button id="zoom-out-btn" type="button">缩小</button>
+      <button id="fit-btn" type="button">适应窗口</button>
+      <button id="zoom-in-btn" type="button">放大</button>
+      <a href="../">返回首页</a>
+    </div>
+  </header>
+
+  <div id="viewport" class="viewport">
+    <div id="stage" class="stage">
+      <svg id="edges" class="edges"></svg>
+    </div>
+  </div>
+
+  <div class="hint">拖拽平移 · 滚轮缩放</div>
+  <script src="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+{
+  "nodes": [
+    {
+      "id": "f1a2b3c4d5e60001",
+      "type": "text",
+      "x": 480,
+      "y": -120,
+      "width": 420,
+      "height": 100,
+      "color": "6",
+      "text": "# hellotrik.github.io\n\n**GitHub Pages** 个人站点 · **Jekyll** + Cayman 主题\n部署域名：`CNAME` → GitHub Pages"
+    },
+    {
+      "id": "f1a2b3c4d5e60002",
+      "type": "group",
+      "x": 20,
+      "y": 20,
+      "width": 420,
+      "height": 400,
+      "color": "4",
+      "label": "Jekyll 站点核心"
+    },
+    {
+      "id": "f1a2b3c4d5e60003",
+      "type": "text",
+      "x": 40,
+      "y": 60,
+      "width": 380,
+      "height": 340,
+      "text": "## 配置与布局\n\n- `_config.yml` — 主题、编码、页面 defaults\n- `_includes/head-custom.html` — 自定义 `<head>`\n- `style.css` / `index.js` / `jquery.min.js`\n\n## 首页与文章\n\n- `README.md` — 首页（词不达意 / 工具面板）\n- `trikbrain.md` · `蒅.md` · `混淆.md`\n- `clock.html` — 独立时钟页"
+    },
+    {
+      "id": "f1a2b3c4d5e60004",
+      "type": "group",
+      "x": 460,
+      "y": 20,
+      "width": 420,
+      "height": 280,
+      "color": "5",
+      "label": "在线工具（静态 SPA）"
+    },
+    {
+      "id": "f1a2b3c4d5e60005",
+      "type": "text",
+      "x": 480,
+      "y": 60,
+      "width": 380,
+      "height": 220,
+      "text": "各目录 `index.html` + `index.css` + `index.js`\n\n| 路径 | 功能 |\n|------|------|\n| `cron/` | Cron 表达式解析与预览 |\n| `cidr/` | IPv4 子网 / CIDR 计算 |\n| `unicode-sort/` | Unicode 码点排序 |\n\n`unicode-sort/samples/` — 示例文本\n`cron/vendor/` — croner.umd.js"
+    },
+    {
+      "id": "f1a2b3c4d5e60006",
+      "type": "group",
+      "x": 460,
+      "y": 320,
+      "width": 420,
+      "height": 300,
+      "color": "2",
+      "label": "互动 / 演示页"
+    },
+    {
+      "id": "f1a2b3c4d5e60007",
+      "type": "text",
+      "x": 480,
+      "y": 360,
+      "width": 380,
+      "height": 240,
+      "text": "## chess/\n\n中国象棋：`board.js` · `position.js` · `search.js` · `book.js`\n`images/` — 棋子与棋盘素材\n\n## qianziwen/\n\n千字文朗读：`index.js` + Plyr 播放器\n`vendor/plyr/` — 音视频控件\n\n## trik/\n\n应用分发：`index.html` + APK / tar.gz 包"
+    },
+    {
+      "id": "f1a2b3c4d5e60008",
+      "type": "group",
+      "x": 900,
+      "y": 20,
+      "width": 400,
+      "height": 280,
+      "color": "3",
+      "label": "Jekyll 子站页面"
+    },
+    {
+      "id": "f1a2b3c4d5e60009",
+      "type": "text",
+      "x": 920,
+      "y": 60,
+      "width": 360,
+      "height": 220,
+      "text": "各目录 `readme.md` + `permalink` 生成子路径首页\n\n- `profile/` — 个人简介\n- `coq/` — Coq 相关笔记\n- `bottleneck/` — VGG16 迁移学习文章\n- `file/` — 静态文件下载（zip 等）"
+    },
+    {
+      "id": "f1a2b3c4d5e60010",
+      "type": "group",
+      "x": 900,
+      "y": 320,
+      "width": 400,
+      "height": 200,
+      "color": "1",
+      "label": "脚本与静态资源"
+    },
+    {
+      "id": "f1a2b3c4d5e60011",
+      "type": "text",
+      "x": 920,
+      "y": 360,
+      "width": 360,
+      "height": 140,
+      "text": "- `abs/py/build_emoji_sample.py` — 生成 emoji 样例\n- `logo.png` · `favicon.ico` · `bg.jpg`\n- `LICENSE` · `.gitignore` · `.vscode/`"
+    },
+    {
+      "id": "f1a2b3c4d5e60012",
+      "type": "group",
+      "x": 20,
+      "y": 440,
+      "width": 1280,
+      "height": 120,
+      "color": "6",
+      "label": "构建产物（本地生成，不入库或忽略）"
+    },
+    {
+      "id": "f1a2b3c4d5e60013",
+      "type": "text",
+      "x": 40,
+      "y": 480,
+      "width": 1240,
+      "height": 60,
+      "text": "`jekyll build` → `_site/`（静态站点输出） · `.jekyll-cache/`（Sass / Markdown 缓存）"
+    },
+    {
+      "id": "f1a2b3c4d5e60014",
+      "type": "text",
+      "x": 1320,
+      "y": 20,
+      "width": 280,
+      "height": 540,
+      "color": "5",
+      "text": "## 数据流\n\n```\n源文件\n  ├─ .md + front matter\n  ├─ 独立 HTML 工具\n  └─ 静态资源\n        │\n        ▼\n   Jekyll 构建\n        │\n        ▼\n     _site/\n        │\n        ▼\n  GitHub Pages\n  hellotrik.github.io\n```\n\n**首页入口**：README 工具面板链到各子路径"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1a2b3c4d5e60001",
+      "fromNode": "f1a2b3c4d5e60001",
+      "fromSide": "bottom",
+      "toNode": "f1a2b3c4d5e60002",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "配置"
+    },
+    {
+      "id": "e1a2b3c4d5e60002",
+      "fromNode": "f1a2b3c4d5e60001",
+      "fromSide": "bottom",
+      "toNode": "f1a2b3c4d5e60004",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "工具"
+    },
+    {
+      "id": "e1a2b3c4d5e60003",
+      "fromNode": "f1a2b3c4d5e60001",
+      "fromSide": "bottom",
+      "toNode": "f1a2b3c4d5e60006",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "演示"
+    },
+    {
+      "id": "e1a2b3c4d5e60004",
+      "fromNode": "f1a2b3c4d5e60001",
+      "fromSide": "bottom",
+      "toNode": "f1a2b3c4d5e60008",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "子站"
+    },
+    {
+      "id": "e1a2b3c4d5e60005",
+      "fromNode": "f1a2b3c4d5e60002",
+      "fromSide": "bottom",
+      "toNode": "f1a2b3c4d5e60012",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "jekyll build"
+    },
+    {
+      "id": "e1a2b3c4d5e60006",
+      "fromNode": "f1a2b3c4d5e60004",
+      "fromSide": "bottom",
+      "toNode": "f1a2b3c4d5e60012",
+      "toSide": "top",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "e1a2b3c4d5e60007",
+      "fromNode": "f1a2b3c4d5e60006",
+      "fromSide": "bottom",
+      "toNode": "f1a2b3c4d5e60012",
+      "toSide": "top",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "e1a2b3c4d5e60008",
+      "fromNode": "f1a2b3c4d5e60008",
+      "fromSide": "bottom",
+      "toNode": "f1a2b3c4d5e60012",
+      "toSide": "top",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "e1a2b3c4d5e60009",
+      "fromNode": "f1a2b3c4d5e60001",
+      "fromSide": "right",
+      "toNode": "f1a2b3c4d5e60014",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "label": "部署"
+    }
+  ]
+}
